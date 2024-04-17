@@ -18,6 +18,18 @@ require("lazy").setup({
     config = function()
       vim.cmd.colorscheme("kanagawa-wave")
     end,
-  }
+  },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = { "vim", "lua", "html", "pug", "css", "scss", "javascript", "rust" },
+        auto_install = true,
+        highlight = {
+          enable = true,
+        },
+      })
+    end,
+  },
 })
 
