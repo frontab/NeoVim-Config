@@ -1,2 +1,3 @@
-require("options")
-require("plugins")
+-- Basic
+require("core.options")
+require("core.plugins")
