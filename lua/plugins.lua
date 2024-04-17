@@ -23,7 +23,7 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     config = function()
       require("nvim-treesitter.configs").setup({
-        ensure_installed = { "vim", "lua", "html", "pug", "css", "scss", "javascript", "rust" },
+        ensure_installed = { "vim", "lua", "html", "pug", "css", "scss", "javascript", "rust", "markdown" },
         auto_install = true,
         highlight = {
           enable = true,
@@ -62,5 +62,23 @@ require("lazy").setup({
     end,
   },
   { "nvim-treesitter/nvim-treesitter-textobjects" },
+  { "neovim/nvim-lspconfig" },
+  {
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason").setup()
+    end,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "mason.nvim" },
+    config = function()
+      require("mason-lspconfig").setup()
+      require("mason-lspconfig").setup_handlers({
+        function(server_name)
+          require("lspconfig")[server_name].setup()
+        end,
+      })
+    end,
+  },
 })
-
