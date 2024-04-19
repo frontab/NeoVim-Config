@@ -1,2 +1,4 @@
-require("frontab.core")
-require("frontab.lazy")
+local dir = "frontab"
+
+require(dir .. ".core")
+require(dir .. ".lazy")
